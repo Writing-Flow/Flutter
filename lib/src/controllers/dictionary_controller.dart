@@ -4,6 +4,7 @@ import 'package:geulnarae/src/sqlite_db/search_history_db.dart';
 
 import '../screens/home/dictionary/category_button.dart';
 
+/*
 class DictionaryController extends GetxController {
   RxList<Map<String, dynamic>> searchStringList = RxList<Map<String, dynamic>>[].obs;
 
@@ -21,4 +22,4 @@ class DictionaryController extends GetxController {
 
 
 
-}
+}*/
