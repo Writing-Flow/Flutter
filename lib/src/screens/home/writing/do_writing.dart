@@ -13,7 +13,7 @@ class DoWriting extends StatefulWidget {
 }
 
 class _DoWritingState extends State<DoWriting> {
-  // 컨트롤러 가져오기
+  // 컨트롤러 가져오기 //가져오기
   final WritingController _controller = Get.put(WritingController());
   
   @override
