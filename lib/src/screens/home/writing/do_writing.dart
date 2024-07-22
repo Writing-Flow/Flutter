@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geulnarae/src/color/app_colors.dart';
 import 'package:geulnarae/src/sqlite_db/writing_db.dart';
+import '../../../controllers/my_page_controller.dart';
 import '../../../controllers/writing_controller.dart';
 import 'writing_more_bottom.dart';
 
@@ -15,6 +16,7 @@ class DoWriting extends StatefulWidget {
 class _DoWritingState extends State<DoWriting> {
   // 컨트롤러 가져오기
   final WritingController _controller = Get.put(WritingController());
+  final myPageController = Get.put(MyPageController());   // 마이 페이지 동기화를 위해
   
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,10 @@ class _DoWritingState extends State<DoWriting> {
             IconButton(onPressed: (){
               WritingDb.insertWriting(_controller.titleTextController.text, _controller.mainTextController.text);
               _controller.isWriting.value = true;
+              myPageController.myWritingListSyn();
+
+              _controller.titleTextController.clear();  // 저장된 text 삭제
+              _controller.mainTextController.clear();
               Get.back();
             }, icon: Icon(Icons.save_alt_rounded)),
 

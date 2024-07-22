@@ -10,4 +10,9 @@ class WritingDb{
     var db = await DatabaseHelper().database;
     await db.execute('INSERT INTO writings(title, main) VALUES(?, ?)', [title, main]);
   }
+
+  static Future<void> deleteWriting(int id) async{
+    var db = await DatabaseHelper().database;
+    await db.execute('delete from writings where id = ?', [id]);
+  }
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:geulnarae/src/color/app_colors.dart';
 import 'package:geulnarae/src/screens/home/dictionary/dictionary_search.dart';
+import 'package:geulnarae/src/screens/home/my/my_page.dart';
 
 import 'writing/writing_intro.dart';
 
@@ -18,7 +19,7 @@ final List<Widget> myTabItems = [
   DictionarySearch(),
   Center(child: Text('퀴즈')),
   Center(child: Text('라운지')),
-  Center(child: Text('My')),
+  MyPage()
 ];
 
 class Home extends StatefulWidget {
