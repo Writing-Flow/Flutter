@@ -13,7 +13,7 @@ class CategoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      //onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -30,9 +30,7 @@ class CategoryButton extends StatelessWidget {
 
             // onTap 정의를 위해(GestureDetector)
             GestureDetector(
-              onTap: () {
-
-              },
+              onTap: onTap,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Icon(

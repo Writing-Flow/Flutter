@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:geulnarae/src/sqlite_db/database_helper.dart';
 
 class SearchHistoryDb{
@@ -6,8 +8,15 @@ class SearchHistoryDb{
     return await db.rawQuery('SELECT * FROM searchhistory');
   }
 
-  static Future<void> insertWriting(String searchstring) async {
+  static Future<void> insertSearchHistory(String searchstring) async {
     var db = await DatabaseHelper().database;
-    await db.execute('INSERT INTO searchhistory(searchstring) VALUES(?)', [searchstring]);
+    await db.rawInsert('INSERT INTO searchhistory(searchstring) VALUES(?)', [searchstring]);
+    log('insertSearchHistory() - searchstring : $searchstring');
+  }
+
+  static Future<void> deleteSearchHistory(String searchstring) async{
+    var db = await DatabaseHelper().database;
+    await db.execute('delete from searchhistory where searchstring = ?', [searchstring]);
+    log('deleteSearchHistory() - searchstring : $searchstring');
   }
 }

@@ -35,20 +35,24 @@ class DatabaseHelper{
   }
 
   void _databaseCreate(Database db, int version) async{
+    // writings 테이블 생성
     await db.execute('''
-        CREATE TABLE writings(
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          title TEXT, 
-          main TEXT
-        )
-    ''');
+    CREATE TABLE writings (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      main TEXT
+    )
+  ''');
+
+    // searchhistory 테이블 생성
     await db.execute('''
-        CREATE TABLE searchhistory(
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          searchstring TEXT
-        )
-    ''');
+    CREATE TABLE searchhistory (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      searchstring TEXT
+    )
+  ''');
   }
+
 
   void closeDatabase() async{
     if(_database != null) await _database!.close();
