@@ -10,8 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^1.0.6
   get: ^4.6.6
+
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +22,14 @@ dev_dependencies:
 
   sqflite: any
   path: any
+  flutter_native_splash: ^2.4.1
+
+flutter_native_splash:
+  android_12:
+    color: "#FFFFDD"
+    image: asset/images/splash_image.png
+    fullscreen: true
+
 
 
 flutter:
@@ -29,4 +39,4 @@ flutter:
     - asset/images/intro/intro_logo.png
     - asset/images/navigation_bar/ink_pen.png
     - asset/images/my/my_app_bar.png
-
+    - asset/images/splash_image.png

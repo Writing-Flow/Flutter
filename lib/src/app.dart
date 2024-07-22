@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:geulnarae/src/color/app_colors.dart';
 
+
 import 'screens/home/home.dart';
 import 'screens/intro/intro.dart';
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
