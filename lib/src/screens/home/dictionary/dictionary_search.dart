@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_instance/get_instance.dart';
+import 'package:geulnarae/src/screens/home/dictionary/dictionary_search_list_view_item.dart';
 import '../../../controllers/dictionary_controller.dart';
+import '../../../models/dictionary_search_model.dart';
+import '../../../providers/dictionary_provider.dart';
 
 class DictionarySearch extends StatefulWidget {
   const DictionarySearch({super.key});
@@ -13,15 +17,24 @@ class DictionarySearch extends StatefulWidget {
 class _DictionarySearchState extends State<DictionarySearch> {
   final dictionaryController = Get.put(DictionaryController());
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.search),
-          onPressed: () {
-            dictionaryController.addSearchHistory();
+          onPressed: () async {
+            log('구간2: ${dictionaryController.searchTextController.text} ');
+            Map json =  await DictionaryProvider().search(dictionaryController.searchTextController.text); // 검색
+            if(json.isNotEmpty){
+              List<DictionarySearchModel> tmp = json['data'].map<DictionarySearchModel>((m) =>
+                  DictionarySearchModel.parse(m)).toList();
+
+              dictionaryController.searchResultList.clear();
+              dictionaryController.searchResultList.assignAll(tmp);
+            }
+
+            await dictionaryController.addSearchHistory();  // 검색 기록
           },
         ),
         title: TextField(
@@ -37,6 +50,7 @@ class _DictionarySearchState extends State<DictionarySearch> {
         ),
 
       ),
+
       body: Column(
         children: [
           SizedBox(
@@ -51,6 +65,18 @@ class _DictionarySearchState extends State<DictionarySearch> {
               ),
             ),
           ),
+          // 검색 결과 리스트
+          Expanded(
+            child: Obx(() =>
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: dictionaryController.searchResultList.length,
+                itemBuilder: (context, index){
+                  return DictionarySearchListViewItem(dictionaryController.searchResultList[index]);
+                },
+              )
+            )
+          )
         ],
       ),
     );
