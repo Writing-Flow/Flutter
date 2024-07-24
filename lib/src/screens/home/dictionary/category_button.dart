@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:geulnarae/src/controllers/dictionary_controller.dart';
 
-class CategoryButton extends StatelessWidget {
+class CategoryButton extends StatefulWidget {
   final VoidCallback? onTap;
   final String? searchString;
 
@@ -12,10 +13,17 @@ class CategoryButton extends StatelessWidget {
   });
 
   @override
+  State<CategoryButton> createState() => _CategoryButtonState();
+}
+
+class _CategoryButtonState extends State<CategoryButton> {
+  final DictionaryController dictionaryController = Get.put(DictionaryController());
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        DictionaryController().searchTextController.text = searchString!;
+        dictionaryController.searchTextController.text = widget.searchString!;
       },
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -26,14 +34,14 @@ class CategoryButton extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              "$searchString",
+              "${widget.searchString}",
               style: TextStyle(fontSize: 14, color: Colors.grey[600]),
             ),
             const SizedBox(width: 8),
 
             // onTap 정의를 위해(GestureDetector)
             GestureDetector(
-              onTap: onTap,
+              onTap: widget.onTap,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Icon(
