@@ -77,7 +77,7 @@ class _DictionarySearchState extends State<DictionarySearch> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Image.asset(
                           "asset/images/dictionary/dictionary_intro.png",
                           height: 140,
