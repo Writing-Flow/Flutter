@@ -30,7 +30,13 @@ class _QuizIntroState extends State<QuizIntro> {
               ElevatedButton(
                 onPressed: quizController.quizRequest,
                 child: Text('퀴즈 시작하기'),
-              )
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: quizController.rankRequest,
+                child: Text('랭킹보기')
+              ),
+
             ],
           ),
         ),

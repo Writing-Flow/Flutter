@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:geulnarae/src/models/quiz_model.dart';
+import 'package:geulnarae/src/models/rank_model.dart';
 import 'package:geulnarae/src/screens/home/quiz/do_quiz.dart';
 import 'package:geulnarae/src/screens/home/quiz/quiz_result.dart';
+import 'package:geulnarae/src/screens/home/rank/rank_intro.dart';
 
 import '../providers/quiz_provider.dart';
 import '../shared/global.dart';
@@ -22,6 +24,10 @@ class QuizController extends GetxController {
   RxList answerList = [].obs;   // 답안 List
   RxList quizResult = [].obs;   // 퀴즈 결과
   RxInt answerCount = 0.obs;      // 정답 수 count
+
+  ///////////////////////////////////
+
+  List<RankModel> rankList = <RankModel>[];   // 랭킹 리스트 (API)
 
   @override
   void onInit() {
@@ -86,6 +92,27 @@ class QuizController extends GetxController {
     // 내가 맞춘 문제 수
     myQuizNum += answerCount.toInt();
     await QuizProvider().quizSave(Global.nickName, answerCount.toInt() * 10);
+  }
+
+  void rankRequest() async{
+    Map json = await QuizProvider().rankRequest();
+
+    if(json.isNotEmpty) {
+      List<RankModel> tmp = json['scores'].map<RankModel>((m) =>
+          RankModel.parse(m)).toList();
+
+      rankList.clear();
+      rankList.assignAll(tmp);
+
+      tmp.asMap().forEach((index, rankModel) {
+        if (rankModel.name.compareTo(Global.nickName) == 0 ) {
+          myRank = RxInt(index + 1);
+        }
+      });
+    }
+
+    Get.to(() => RankIntro());
+
   }
 
 }

@@ -11,7 +11,7 @@ final List<BottomNavigationBarItem> myTabs = [
   const BottomNavigationBarItem(icon: ImageIcon(AssetImage('asset/images/navigation_bar/ink_pen.png')), label: '작문'),
   const BottomNavigationBarItem(icon: Icon(Icons.search), label: '사전'),
   const BottomNavigationBarItem(icon: Icon(Icons.extension), label: '퀴즈'),
-  const BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: '라운지'),
+  // const BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: '라운지'),
   const BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My'),
 ];
 
@@ -19,7 +19,7 @@ final List<Widget> myTabItems = [
   WritingIntro(),
   DictionarySearch(),
   QuizIntro(),
-  Center(child: Text('라운지')),
+  // Center(child: Text('라운지')),
   MyPage()
 ];
 

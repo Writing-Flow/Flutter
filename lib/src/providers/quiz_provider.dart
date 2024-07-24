@@ -30,5 +30,19 @@ class QuizProvider extends Provider {
 
   }
 
+  Future<Map> rankRequest() async {
+
+    Response response = await get(
+      '${Global.baseUrl}/ranking'
+    );
+    log('response.body : ${response.body}');
+
+    // response.body가 null인 경우를 대비하여 기본 값을 반환
+    if (response.body != null && response.body is Map) {
+      return response.body;
+    } else {
+      return {};
+    }
+  }
 
 }
