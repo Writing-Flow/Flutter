@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geulnarae/src/screens/home/dictionary/dictionary_search_list_view_item.dart';
@@ -24,7 +22,7 @@ class _DictionarySearchState extends State<DictionarySearch> {
         leading: IconButton(
           icon: Icon(Icons.search),
           onPressed: () async {
-            log('구간2: ${dictionaryController.searchTextController.text} ');
+
             Map json =  await DictionaryProvider().search(dictionaryController.searchTextController.text); // 검색
             if(json.isNotEmpty){
               List<DictionarySearchModel> tmp = json['data'].map<DictionarySearchModel>((m) =>
