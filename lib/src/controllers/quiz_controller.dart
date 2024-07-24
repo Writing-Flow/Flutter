@@ -16,6 +16,8 @@ import '../shared/global.dart';
 class QuizController extends GetxController {
   RxInt myQuizNum = 0.obs;                        // quiz intro 변수 제어
   RxInt myRank = 0.obs;
+  RxString todayWord = ''.obs;
+  RxString todayWordDefinition = ''.obs;
 
   List<QuizModel> quizList = <QuizModel>[]; // 퀴즈 요청 리스트
   var currentQuestionIndex = 0.obs;               // 현재 퀴즈 페이지 제어
@@ -36,6 +38,10 @@ class QuizController extends GetxController {
   }
 
   Future<void> _initialData() async {
+    Map json = await QuizProvider().quiz();
+
+    todayWord = RxString(json['questions'][0]['word']);
+    todayWordDefinition = RxString(json['questions'][0]['definition']);
   }
 
   void quizRequest() async {

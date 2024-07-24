@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geulnarae/src/controllers/dictionary_controller.dart';
 
 class CategoryButton extends StatelessWidget {
   final VoidCallback? onTap;
@@ -13,7 +14,9 @@ class CategoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      //onTap: onTap,
+      onTap: (){
+        DictionaryController().searchTextController.text = searchString!;
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(

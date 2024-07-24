@@ -28,7 +28,10 @@ class WritingMoreBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // ListTile(leading: Icon(Icons.ios_share_rounded), title: Text('글 공유하기')),
-                ListTile(leading: Icon(Icons.search), title: Text('사전 찾기')),
+                ListTile(leading: Icon(Icons.search), title: Text('사전 찾기'),
+                onTap: (){
+                  //Get.to(() => )
+                },),
                 ListTile(leading: Icon(Icons.delete),title: Text('내용 다 지우기'), textColor: AppColors.color_3,
                   onTap: (){
                     controller.setTextDelete();

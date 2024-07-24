@@ -13,9 +13,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   DatabaseHelper.instance;  // db instance 초기화
 
+
+
   await Future.delayed(Duration(seconds: 2), () {
     FlutterNativeSplash.remove();   // 3초 후 스플래시 종료
   });
+
 
   runApp(const MyApp());
 }

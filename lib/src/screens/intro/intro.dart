@@ -1,5 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'login.dart';
 
 class Intro extends StatefulWidget {
   const Intro({super.key});
@@ -23,6 +26,7 @@ class _IntroState extends State<Intro> {
                       // 로고
                       Image.asset('asset/images/intro/intro_logo.png', width: 150, height: 197),
                       // 슬로건
+                      SizedBox(height: 15),
 
                       const Text('머리 속에 떠돌던 생각을\n 작성해보시겠습니까?', textAlign: TextAlign.center)
                     ],
@@ -50,7 +54,7 @@ class _IntroState extends State<Intro> {
                           const Text('이미 가입하셨나요?'),
                           TextButton(
                               onPressed: (){
-                                //Get.to(() => const Login());
+                                Get.to(() => const Login());
                               },
                               child: const Text('로그인')
                           )
