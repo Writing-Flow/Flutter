@@ -85,7 +85,7 @@ class QuizController extends GetxController {
     }
     // 내가 맞춘 문제 수
     myQuizNum += answerCount.toInt();
-    await QuizProvider().quizSave(Global.nickName, answerCount.toInt());
+    await QuizProvider().quizSave(Global.nickName, answerCount.toInt() * 10);
   }
 
 }

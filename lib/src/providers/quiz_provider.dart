@@ -23,7 +23,7 @@ class QuizProvider extends Provider {
   Future<void> quizSave(String nickname, int score) async {
 
     Response response = await get(
-      '${Global.baseUrl}/search',
+      '${Global.baseUrl}/quizsave',
       query: {'name': '$nickname', 'score': '$score'},
     );
     log('response.status.code : ${response.status.code}');
