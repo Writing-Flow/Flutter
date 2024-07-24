@@ -13,6 +13,9 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   get: ^4.6.6
+  mysql_client: ^0.0.27
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
 
 
 dev_dependencies:
@@ -20,8 +23,6 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^3.0.0
 
-  sqflite: any
-  path: any
   flutter_native_splash: ^2.4.1
 
 flutter_native_splash:
