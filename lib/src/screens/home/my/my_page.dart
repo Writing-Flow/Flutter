@@ -20,7 +20,7 @@ class MyPage extends StatelessWidget {
           slivers: <Widget>[
             SliverAppBar(
               title: Center(child: Text('마이 페이지')),
-              expandedHeight: 230.0,
+              expandedHeight: 271.0,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(

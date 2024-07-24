@@ -20,8 +20,13 @@ class _MyWritingListViewItemState extends State<MyWritingListViewItem> {
     return InkWell(
       onTap: (){
       },
-      child: Padding(
+      child: Container(
+        margin: const EdgeInsets.all(3.0),
         padding: const EdgeInsets.all(3.5),
+        decoration: BoxDecoration(
+          color: Color(0x33645F5E), // 배경색 설정
+          borderRadius: BorderRadius.circular(8.0), // 둥근 모서리 설정
+        ),
         child: Stack(
           children: [
              Row(
